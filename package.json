@@ -9,6 +9,7 @@
   "main": "src/index.js",
   "dependencies": {
     "d3": "6.3.1",
+    "jStat": "1.8.6",
     "react": "17.0.0",
     "react-dom": "17.0.0",
     "react-scripts": "3.4.3"
