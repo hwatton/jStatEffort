@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import * as d3 from "d3";
 import * as jstat from "jstat";
-import lineFunc from "./functions.js";
+
 import Line from "./d3Line.jsx";
 
 export default function App() {
@@ -17,20 +17,35 @@ export default function App() {
   });
   //jstat rand
   let jRand = jstat.rand(1, 600);
+  let copy = jRand;
 
   let order = jRand[0].sort(function (a, b) {
     return a - b;
   });
 
   let pathArr = [];
+  let pathTwo = [];
+
+  let pathTwoTwo = [];
 
   let yScale = d3.scaleLinear().domain([0, 1]).range([0, 200]);
 
   order.forEach(function (element, i) {
     pathArr.push({ x: i, y: yScale(element) });
   });
+  pathArr.push({ x: 600, y: yScale(0) });
+  copy[0].forEach(function (element, i) {
+    pathTwo.push({ x: i, y: yScale(element) });
+  });
+  pathTwo.push({ x: 600, y: yScale(0) });
 
-  let path = lineFunc(pathArr);
+  pathTwoTwo.push({ x: 0, y: yScale(0) });
+  copy[0].forEach(function (element, i) {
+    pathTwoTwo.push({ x: i, y: yScale(Math.random()) });
+  });
+
+  pathTwoTwo.push({ x: 600, y: yScale(0) });
+  console.log(jRand);
 
   return (
     <div className="App">
@@ -38,8 +53,9 @@ export default function App() {
       <h1>d3 Num:{num}</h1>
       <h1>jStat Map:{jMap} </h1>
       <h1>jStat Rand:{jRand} </h1>
-
       <Line data={pathArr} width="500" height="200" id="lineThing" />
+      <Line data={pathTwo} width="500" height="200" id="lineThingTwo" />
+      <Line data={pathTwoTwo} width="500" height="200" id="lineThingTwo" />
     </div>
   );
 }

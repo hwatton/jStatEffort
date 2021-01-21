@@ -34,7 +34,7 @@ class Line extends React.Component {
       .x((d) => xScale(d.x))
       .y((d) => yScale(d.y));
 
-    console.log(line(this.props.data));
+    //console.log(line(this.props.data));
     return <path className="line" d={line(this.props.data)} />;
   }
 
