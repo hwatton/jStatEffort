@@ -2,14 +2,9 @@ import React from "react";
 import * as d3 from "d3";
 
 class Line extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
-
   drawLine() {
-    let wd = parseInt(this.props.width);
-    let ht = parseInt(this.props.height);
+    let wd = parseInt(this.props.width, 10);
+    let ht = parseInt(this.props.height, 10);
 
     let xScale = d3
       .scaleTime()

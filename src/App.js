@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 import * as d3 from "d3";
 import * as jstat from "jstat";
-
+import Circles from "./circles.jsx";
 import Line from "./d3Line.jsx";
 
 export default function App() {
@@ -45,7 +45,12 @@ export default function App() {
   });
 
   pathTwoTwo.push({ x: 600, y: yScale(0) });
-  console.log(jRand);
+
+  let circleData = [];
+  for (let i = 0; i < 10; i++) {
+    let num = Math.random() * 10 + 20;
+    circleData.push({ rndNum: num });
+  }
 
   return (
     <div className="App">
@@ -56,6 +61,7 @@ export default function App() {
       <Line data={pathArr} width="500" height="200" id="lineThing" />
       <Line data={pathTwo} width="500" height="200" id="lineThingTwo" />
       <Line data={pathTwoTwo} width="500" height="200" id="lineThingTwo" />
+      <Circles data={circleData} width="500" height="200" />
     </div>
   );
 }
